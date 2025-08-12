@@ -8,7 +8,6 @@ export default function Payment() {
 
   // Detect when the SDK is ready
   useEffect(() => {
-     <script src="https://sdk.cashfree.com/js/ui/2.0.0/cashfree.js"></script>
     if (window.Cashfree) {
       setSdkReady(true);
     }
@@ -27,7 +26,7 @@ export default function Payment() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        orderAmount: 100,
+        orderAmount: 1,
         customerId: "cust_001",
         customerEmail: "test@example.com",
         customerPhone: "9999999999",
