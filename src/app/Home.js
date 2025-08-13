@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMyContext } from "./ContextApi/CreateContext";
 import Header from "./Home/Header";
 import Herro from "./Home/Herro";
@@ -13,7 +13,16 @@ export default function Home() {
   const { Answer } = useMyContext();
   const notebookRef = useRef(null);
   const [HNumber, setHnumber] = useState(0);
-
+  const [ispaid ,setispaid]=useState(false)
+  useEffect(()=>{
+    let user=localStorage.getItem('user')
+    if(user){
+      user=JSON.parse(user)
+      if(user.isPaid){
+        setispaid(true)
+      }
+    }
+  },[])
   const Handwriting = [
     { name: "Deepali Font", size: "55px", paddingTop: "3cm", lineHeight: '37.4px' },
     { name: "GloriaHallelujah", size: "20px", paddingTop: "2.5cm", lineHeight: '38px' },
@@ -46,14 +55,26 @@ export default function Home() {
             Handwriting={Handwriting}
             HNumber={HNumber}
           />
-          <Script
+          {ispaid??(<Script
             strategy="afterInteractive"
             src="//pl27331529.profitableratecpm.com/4f/23/14/4f23143fd5de57320e004c6b592d471c.js"
-          />
-          <Script
+          />)}
+          {
+            ispaid??(
+              <Script
         strategy="afterInteractive"
         src="//pl27331556.profitableratecpm.com/cd/55/b9/cd55b9819f7ac924b683c4a732815ef7.js"
       />
+            )
+          }
+        {ispaid??(
+          <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        crossOrigin="anonymous"
+        strategy="afterInteractive"
+      />
+        )}
         </div>
 
       </div>

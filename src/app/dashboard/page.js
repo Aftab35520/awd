@@ -56,7 +56,7 @@ export default function page() {
 
     return (
         
-        <div className="w-full min-h-dvh max-w-[2000px] flex flex-col items-center justify-between z-30 mt-4">
+        <div className="w-full min-h-dvh max-w-[2000px] flex flex-col items-center justify-between z-30 mt-4 overflow-hidden">
               <div className="w-full flex flex-col items-center  ">
                 {
                   fonturl!==""&&(
@@ -71,7 +71,7 @@ export default function page() {
                     <FontGeneratorPanel/>
                 </div>:
                 <div className='w-full flex flex-col items-center '>
-                     <div className='w-1/2 '>
+                     <div className='w-1/2 flex justify-center max-sm:w-full'>
                     <Prompt />
                 </div>
                 <div className="flex flex-row-reverse relative FlexingCol">

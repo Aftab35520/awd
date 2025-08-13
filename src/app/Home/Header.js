@@ -42,7 +42,7 @@ export default function Header() {
                 >
                   <path d="M12 2L2 7l10 5 10-5-10-5zm0 10L2 17l10 5 10-5-10-5z" />
                 </svg>
-                Subscribe
+               <span className="max-sm:hidden"> Subscribe</span>
               </button>
             ))
           }
@@ -56,7 +56,7 @@ export default function Header() {
                 title="Go to Dashboard"
               >
                 <FaUserCircle className="w-5 h-5 text-white" />
-                <span className="font-medium text-base max-lg:text-[15px]">{user.name}</span>
+                <span className="font-medium text-base max-lg:text-[15px] max-sm:hidden">{user.name}</span>
               </div>
 
             ) : (
@@ -66,7 +66,7 @@ export default function Header() {
                 title="Go to Dashboard"
               >
                 <FaUserCircle className="w-5 h-5 text-white" />
-                <span className="font-medium text-base max-lg:text-[15px]">Login</span>
+                <span className="font-medium text-base max-lg:text-[15px] max-sm:hidden">Login</span>
               </div>
             )
           }

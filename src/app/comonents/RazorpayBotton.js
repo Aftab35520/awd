@@ -40,6 +40,7 @@ export default function RazorpayBotton() {
           if(user){
             user=JSON.parse(user)
             user.isPaid=true
+            user.
             localStorage.setItem("user",JSON.stringify(user))
           } 
           window.location.assign("/dashboard")
