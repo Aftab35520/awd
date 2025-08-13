@@ -12,6 +12,7 @@ import DashboardHeader from './DashboardHeader';
 import DynamicFontLoader from './DownloadFont';
 
 export default function page() {
+  const { setsubscribe } = useMyContext();
     const { Answer } = useMyContext();
     const notebookRef = useRef(null);
     const [HNumber, setHnumber] = useState(0);
@@ -19,7 +20,6 @@ export default function page() {
     const[ credit,setcredit]=useState(0)
     const [paid,setpaid]=useState(false)
     const [fonturl,setfonturl]=useState('')
-    console.log(credit,paid)
     useEffect(()=>{
         const userData = localStorage.getItem('user');
         if (userData) {
@@ -64,7 +64,7 @@ export default function page() {
                   )
                 }
                 <Header />
-                <DashboardHeader routes={routes} setroutes={setroutes}/>
+                <DashboardHeader routes={routes} setroutes={setroutes} credit={credit}/>
                 <Gradient />
                 {
                     routes=="generatefont"? <div className='p-2  w-full h-dvh flex justify-center items-center'>
@@ -77,11 +77,15 @@ export default function page() {
                 <div className="flex flex-row-reverse relative FlexingCol">
 
                     {Answer !== "Loading" && Answer !== "Default" && (
-                        <DownloadSection
+                        <div>
+                         {
+                          paid? <DownloadSection
                             generatePDFRef={notebookRef}
                             setHnumber={setHnumber}
                             Handwriting={Handwriting}
-                        />
+                        />:<div className="mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer" onClick={()=>setsubscribe(true)}>Enable Download</div>
+                         }
+                          </div>
                     )}
 
                     <NotebookDisplay

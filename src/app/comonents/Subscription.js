@@ -1,3 +1,5 @@
+import RazorpayBotton from "./RazorpayBotton";
+
 export default function SubscriptionDashboardUI({setSubscribe}) {
   return (
     <>
@@ -27,9 +29,7 @@ export default function SubscriptionDashboardUI({setSubscribe}) {
           </p>
           <p>Your custom handwriting font is ready for download.</p>
           <p className="text-2xl md:text-3xl font-bold">₹49 (One-Time Payment)</p>
-          <button className="mt-3 bg-yellow-400 text-yellow-900 px-6 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition text-sm md:text-base">
-            Buy Premium
-          </button>
+          <RazorpayBotton/>
         </div>
 
         <div className="mt-8 border-t border-white border-opacity-20 pt-6 text-center text-xs md:text-base">

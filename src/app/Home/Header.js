@@ -9,11 +9,13 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter()
   const [user, setuser] = useState(null)
-const { setsubscribe  } = useMyContext();
+  const { setsubscribe } = useMyContext();
+  const [ispaid, setispaid] = useState(false)
   useEffect(() => {
     const userData = localStorage.getItem('user');
     if (userData) {
       setuser(JSON.parse(userData));
+      setispaid(JSON.parse(userData).isPaid)
     }
     else {
       setuser(null)
@@ -25,21 +27,25 @@ const { setsubscribe  } = useMyContext();
       <div className="w-[80%] flex justify-between items-center pl-2 pr-2 max-sm:w-[90%]">
         <Image src={logo} alt="" className="w-[200px] cursor-pointer max-sm:w-[150px]" onClick={() => router.push("/")} />
         <div className="flex  justify-center items-center ">
-          <button
-            onClick={() => setsubscribe(true)}
-            className="flex items-center gap-2 mr-2  bg-yellow-400 text-yellow-900 px-6 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition text-sm md:text-base"
-          >
-            {/* Example SVG, replace with Kingtaj SVG if you have it */}
-            <svg
-              xmlns="http://www.w3.org/23000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              className="w-5 h-5"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5zm0 10L2 17l10 5 10-5-10-5z" />
-            </svg>
-            Subscribe
-          </button>
+          {
+            (!ispaid && (
+              <button
+                onClick={() => setsubscribe(true)}
+                className="flex items-center gap-2 mr-2  bg-yellow-400 text-yellow-900 px-6 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition text-sm md:text-base"
+              >
+                {/* Example SVG, replace with Kingtaj SVG if you have it */}
+                <svg
+                  xmlns="http://www.w3.org/23000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  className="w-5 h-5"
+                >
+                  <path d="M12 2L2 7l10 5 10-5-10-5zm0 10L2 17l10 5 10-5-10-5z" />
+                </svg>
+                Subscribe
+              </button>
+            ))
+          }
 
 
           {
@@ -54,7 +60,7 @@ const { setsubscribe  } = useMyContext();
               </div>
 
             ) : (
-               <div
+              <div
                 onClick={() => router.push("/auth/login")}
                 className="flex items-center gap-2 pt-2 pb-2 cursor-pointer text-white max-lg:text-[15px] transition-colors duration-200 hover:text-[#6300fd] select-none bg-gradient-to-r from-purple-700 to-indigo-600 rounded px-3 py-1"
                 title="Go to Dashboard"
@@ -65,7 +71,7 @@ const { setsubscribe  } = useMyContext();
             )
           }
         </div>
-      
+
       </div>
     </div>
   )

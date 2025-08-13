@@ -39,11 +39,12 @@ export default function RootLayout({ children }) {
         <meta name="author" content="Assignment Ai" />
         <meta property="og:title" content={metadata.title} />
         <meta property="og:description" content={metadata.description} />
-         <script
+         {/* <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1785797053350370"
           crossorigin="anonymous"
-        ></script>
+        ></script> */}
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
       </head>
       <body className="w-full flex  flex-col  items-center justify-between  overflow-x-hidden" suppressHydrationWarning={true} >
         <MyProvider>
